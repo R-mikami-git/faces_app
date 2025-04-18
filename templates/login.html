@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>顔認識アプリ</title>
+
+    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kaisei+Decol&family=Klee+One&family=Rampart+One&family=RocknRoll+One&display=swap" rel="stylesheet">
+
+<body>
+    <form method="POST" action="/login">
+        <div class="login_container">
+            <div class="login_form">
+                <h1>ログイン画面</h1>
+                <label for="username">ユーザー名:</label>
+                <input type="text" id="username" name="username" required>
+                <label for="password">パスワード:</label>
+                <input type="password" id="password">
+                <div class="button-group">
+                    <button type="button" onclick="login()">ログイン</button>
+                    <button type="button" onclick="index_back()">戻る</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
+</html>

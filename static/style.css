@@ -1,0 +1,311 @@
+@charset "UTF-8";
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
+body {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    font-family: "Hina Mincho", serif;
+    font-style: normal;
+    background: linear-gradient(-45deg, #d0fff9, #bdfff6, #71fdfd, #00e1ff);
+    background-size: 400% 400%;
+    animation: gradientAnimation 5s ease infinite; 
+}
+
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+
+/* 処理中メッセージのスタイル */
+#processingMessage {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 54, 54, 0.8);
+    border: 2px solid #000;
+    color: rgb(0, 0, 0);
+    padding: 20px;
+    border-radius: 10px;
+    font-family: "Hina Mincho", serif;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    z-index: 1000; /* 他の要素の上に表示 */
+}
+
+
+
+#title {
+    margin: 10px 0 0 0 ;
+    font-family: "Klee One", cursive;
+    text-align: center;
+    font-size: 30px;
+}
+
+.main {
+    display: flex; /* Flexboxを有効化 */
+    flex-direction: row; /* 横方向の並びに設定 */
+    width: 80%; /* 全幅を確保 */
+    justify-content: space-between; /* 子要素間のスペースを均等に配置 */
+    align-items: center; /* 縦方向に中央揃え */
+    margin: 0 auto; /* 自動で中央揃え */
+}
+
+.content_left {
+    flex: 1;
+    text-align: center;
+}
+
+.camera {
+    width: 600px; /* カメラ枠の幅 */
+    height: 450px; /* カメラ枠の高さ */
+    border: 2px solid #000; /* 外枠を作成 */
+    border-radius: 30px; /* 角を丸める */
+    box-shadow: 0 5px rgb(184, 192, 79); /* 影をつけて立体感を表現 */
+    overflow: hidden; /* 枠から画像がはみ出ないようにする */
+    display: flex; /* 子要素を中央揃え */
+    justify-content: center; /* 水平方向に中央揃え */
+    align-items: center; /* 垂直方向に中央揃え */
+    margin: 0 auto; /* 中央に配置 */
+    
+}
+
+.content_right {
+    flex: 1; /* 必要に応じて幅を調整 */
+    text-align: center;
+}
+
+/* 親要素の設定 */
+.register-form-container {
+    display: flex; /* Flexboxを有効化 */
+    justify-content: space-between; /* 子要素を左右に配置 */
+    align-items: flex-start; /* 子要素を上揃え */ 
+    width: 50%;
+    margin: 0 auto;
+    padding: 10px;
+    gap: 20px; /* 子要素間の余白を設定 */
+    text-align:center;
+}
+
+/* 左側（inputフィールド）のスタイル */
+.register-form-input {
+    flex: 1; 
+    margin-right: 100px;
+    text-align: center;
+    font-family: "Klee One", cursive;
+    font-size: 20px;
+}
+
+/* 右側（ボタン）のスタイル */
+.register-form-button {
+    flex: 0 0 auto; /* 必要なサイズにだけ収縮 */
+    display: flex;
+    flex-direction: column; /* ボタンを縦方向に並べる */
+    gap: 10px; /* ボタン間の余白を設定 */
+    margin-top: 20px;
+    margin-right: 100px;
+}
+
+.main button{
+    padding: 5px 20px;
+    margin: 50px 50px;
+    font-size: 30px;
+    background-color: #f0f0f0;
+    border: 1px solid #000;
+    cursor: pointer;
+    border-radius: 20px; /* 角を丸める（20pxが適度） */
+    box-shadow: 0 4px #2E7D32; /* 立体感のための影 */
+    transition: all 0.3s ease; /* アニメーションを滑らかに */
+}
+
+.register-form-button button{
+    padding: 5px 20px;
+    margin-top: 10px;
+    font-size: 15px;
+    background-color: #f0f0f0;
+    border: 1px solid #000;
+    cursor: pointer;
+    border-radius: 20px; /* 角を丸める（20pxが適度） */
+    box-shadow: 0 4px #2E7D32; /* 立体感のための影 */
+    transition: all 0.3s ease; /* アニメーションを滑らかに */
+}
+
+
+
+button:hover {
+    transform: scale(1.1); /* ホバー時に拡大 */
+}
+
+input:hover {
+    transform: scale(1.1); /* ホバー時に拡大 */
+}
+
+button:active {
+    transform: scale(1.05); /* クリック時の軽い縮小 */
+    box-shadow: 0 2px rgba(0, 0, 0, 0.2);
+}
+
+
+/* ここからlogin.html */
+
+.login_container {
+    display: flex;
+    align-items: center; /* 横方向に中央揃え */
+    justify-content: center; /* 縦方向に中央揃え */
+    height: 100vh; /* ビューポート全体の高さ */
+}
+
+.login_form {
+    display: flex;
+    flex-direction: column; /* 要素を縦方向に配置 */
+    justify-content: center; /* 縦方向に中央揃え */
+    align-items: center; /* 横方向に中央揃え */
+    width: 300px;
+    height: 200px;
+    border: 1px solid black; /* 四角の枠線を設定 */
+    background-color: #fffd7e;
+    border-radius: 20px; /* 角を丸める（20pxが適度） */
+    box-shadow: 0 4px #2E7D32; /* 立体感のための影 */
+}
+
+.login_form h1 {
+    font-family: "Klee One", cursive;
+}
+
+.login_container button{
+    padding: 5px 20px;
+    margin-top: 10px;
+    font-size: 15px;
+    background-color: #f0f0f0;
+    border: 1px solid #000;
+    cursor: pointer;
+    border-radius: 20px; /* 角を丸める（20pxが適度） */
+    box-shadow: 0 4px #2E7D32; /* 立体感のための影 */
+    transition: all 0.3s ease; /* アニメーションを滑らかに */
+}
+
+/* ここからsetting.html*/
+
+.setting_container {
+    display: flex; /* 横並びのレイアウトを設定 */
+    align-items: flex-start; /* 上揃え */
+    justify-content: space-between; /* 両端に配置 */
+    gap: 20px; /* 要素間の隙間 */
+}
+
+.sort_form {
+    position: sticky;
+    top: 20px; /* 画面上部からの距離 */
+    right: 15px; /* 画面右側からの距離 */
+    width: 200px; /* フォームの幅を指定 */
+    padding: 20px;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    height: fit-content; /* 必要に応じて内容に応じた高さを調整 */
+}
+
+.sort_form label {
+    display: block;
+    font-weight: bold;
+    color: #333;
+    font-size: 16px;
+    margin-top:5px;
+}
+
+.sort_form input[type="text"] {
+    width: 100%; /* 入力フィールドを横幅いっぱいに広げる */
+    padding: 8px;
+    margin-bottom: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.sort_form input[type="text"]:focus {
+    border-color: #66afe9;
+    outline: none;
+    box-shadow: 0 0 5px rgba(102, 175, 233, 0.6);
+}
+.button-group{
+    display: flex; /* 横並びにする */
+    gap: 10px; /* ボタン間の余白 */
+    justify-content: space-between; /* 両端に配置 */
+}
+
+.sort_form button {
+    flex: 1;
+    width: 100%;
+    padding: 10px;
+    margin-top: 15px;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.sort_form button:hover {
+    background-color: #45a049;
+}
+
+.data_table {
+    flex:2;
+    width:100%;
+    background-color: #ffffff;
+    margin-left: 10px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid #ccc;
+}
+
+th, td {
+    padding: 8px;
+    text-align: center;
+}
+
+th {
+    cursor: pointer;                  /* クリック可能であることを示すカーソル */
+    background-color: #f2f2f2;      /* ヘッダーの背景色（必要に応じて変更） */
+    padding: 10px;                    /* 適切な余白を設定 */
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+th:hover {
+    background-color: #e0e0e0; /* ホバー時に背景色を少し変えて視覚効果を追加 */
+}

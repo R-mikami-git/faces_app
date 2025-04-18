@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>出席管理アプリ</title>
+
+    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kaisei+Decol&family=Klee+One&family=Rampart+One&family=RocknRoll+One&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <div id="title"><h1>出席管理</h1></div>
+
+    <div class="main">
+
+        <!-- デフォルトボタン設定 -->
+        <div class="content_left">
+            <button class="button" type="button" onclick="register()">登録</button>
+            <button class="button" type="button" onclick="setting()">設定</button>
+        </div>
+
+        <!-- Flaskのカメラ起動実行 -->
+        <div class="camera">
+            <img src="{{ url_for('video_feed') }}">
+        </div>
+
+        <div class="content_right">
+            <div id="countdown" style="font-size: 18px; color: red;"></div>
+            <button id="attendanceBtn" button class="button" type="button" onclick="recordAttendance()">出席</button>
+            <div id="countdown" style="font-size: 18px; color: red;"></div>
+            <button id="leaveBtn" button class="button" type="button" onclick="recordAway()">退席</button>
+        </div>
+
+    </div>
+
+    <!-- 登録が押されたときのみ表示させる隠されたform -->
+    <div id="register-form" style="display: none;">
+        <div class="register-form-container">
+            <div class="register-form-input">
+
+                <label for="class">　　　　　　登録</label><br>
+
+                <label for="class">　クラス:　</label>
+                <input type="text" id="class" name="class" pattern="\d{6}" 
+                required title="6桁の数字で入力してください" placeholder="例:200101"><br>
+
+                <label for="student_number">出席番号:　</label>
+                <input type="text" id="student_number" name="student_number" pattern="\d{1,2}" required title="2桁までの数字で入力してください"><br>
+            
+                <label for="name">　　名前:　</label>
+                <input type="text" id="name" name="name"><br>
+            </div>
+            <div class="register-form-button">
+                <button id="recordBtn"button type="button" onclick="recordFace()">送信</button>
+                <button type="button" onclick="cancel()">やめる</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

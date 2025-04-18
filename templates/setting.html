@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>顔認識アプリ</title>
+
+    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kaisei+Decol&family=Klee+One&family=Rampart+One&family=RocknRoll+One&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <h1>設定</h1>
+    <div class="setting_container">
+        
+        <!-- テーブル (左) -->
+        <div class="data_table" data-sort-order="asc">
+            <table>
+                <thead>
+                    <tr>
+                        <th onclick="sortTable(0)">ユーザーID</th>
+                        <th onclick="sortTable(1)">クラス</th>
+                        <th onclick="sortTable(2)">出席番号</th>
+                        <th onclick="sortTable(3)">名前</th>
+                        <th onclick="sortTable(4)">日付</th>
+                        <th onclick="sortTable(5)">出席時間</th>
+                        <th onclick="sortTable(6)">退席時間</th>
+                        <th onclick="sortTable(7)">出席時間2</th>
+                        <th onclick="sortTable(8)">退席時間2</th>
+                        <th onclick="sortTable(9)">ステータス</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% if data %}
+                    {% for row in data %}
+                    <tr>
+                        <td>{{ row["ユーザーcd"] }}</td>
+                        <td>{{ row["クラス"] }}</td>
+                        <td>{{ row["出席番号"] }}</td>
+                        <td>{{ row["名前"] }}</td>
+                        <td>{{ row["日付"] }}</td>
+                        <td>{{ row["出席時間"] }}</td>
+                        <td>{{ row["退席時間"] }}</td>
+                        <td>{{ row["出席時間2"] }}</td>
+                        <td>{{ row["退席時間2"] }}</td>
+                        <td>{{ row["ステータス"] }}</td>
+                    </tr>
+                    {% endfor %}
+                    {% else %}
+                    <tr>
+                        <td colspan="8">データがありません。</td>
+                    </tr>
+                    {% endif %}
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 入力フォーム (右) -->
+        <div class="sort_form">
+            <h2>検索</h2>
+            <label for="class">クラス:</label>
+            <input type="text" id="class" name="class">
+            <label for="name">名前:</label>
+            <input type="text" id="name" name="name">
+            <label for="check_day">日付:</label>
+            <input type="text" id="check_day" name="check_day">
+            <div class="button-group">
+                <button type="button" onclick="data_transmission()">送信</button>
+                <button type="button" onclick="clear_form()">クリア</button>
+            </div>
+            <button type="button" onclick="index_back()">ホームに戻る</button>
+        </div>
+    </div>
+</body>
+</html>

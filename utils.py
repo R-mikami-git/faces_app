@@ -48,7 +48,7 @@ def create_label_confidence_list(new_faces_list):
 
 # データベースとテーブルがない場合、新しくそれらを作成する
 def create_database():
-    conn = psycopg2.connect("postgresql://postgres:gododb4600@localhost:5432/postgres")
+    conn = psycopg2.connect("postgresql://faces_app_user:password@localhost:5432/postgres")
     conn.autocommit = True
     cursor = conn.cursor()
     db_name = "flask_app"

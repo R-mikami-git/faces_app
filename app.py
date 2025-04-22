@@ -3,7 +3,7 @@ from db_config import db
 
 
 app = Flask(__name__)
-DATABASE_URI = "postgresql://postgres:gododb4600@localhost:5432/flask_app"
+DATABASE_URI = "postgresql://faces_app_user:password@localhost:5432/flask_app"
 app.config["SQLALCHEMY_DATABASE_URI"] = DATABASE_URI
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db.init_app(app)
